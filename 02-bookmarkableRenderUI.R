@@ -24,9 +24,10 @@ shinyApp(
     })
     
     output$result <- renderUI({
-      if (input$tool == 'summary') verbatimTextOutput('summary')
-      else if (input$tool == 'plot') plotOutput('plot')
-      else if (input$tool == 'head') tableOutput('head')
+      switch(input$tool,
+        'summary' = verbatimTextOutput('summary'),
+        'plot' = plotOutput('plot'),
+        'head' = tableOutput('head'))
     })
     
     output$summary <- renderPrint({ summary(dataset()) })

@@ -23,9 +23,10 @@ shinyApp(
     observeEvent(input$add, {
       id <- paste0(input$tool, input$add)
       insertUI('#placeholder', 
-        ui = if (input$tool == 'summary') verbatimTextOutput(id)
-             else if (input$tool == 'plot') plotOutput(id)
-             else if (input$tool == 'head') tableOutput(id)
+        ui = switch(input$tool,
+          'summary' = verbatimTextOutput(id),
+          'plot' = plotOutput(id),
+          'head' = tableOutput(id))
       )
       output[[id]] <-
         if (input$tool == 'summary') renderPrint({ summary(dataset()) })

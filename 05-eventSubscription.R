@@ -29,9 +29,10 @@ server <- function(input, output, session) {
         style = 'border: 2px solid #191919; border-radius: 5px; 
                  background: #CCCCCC; margin: 15px;',
         actionButton(rmvid, 'X', style = 'background: #ff6666; color: #fff'),
-        if (input$tool == 'summary') verbatimTextOutput(id)
-        else if (input$tool == 'plot') plotOutput(id)
-        else if (input$tool == 'head') tableOutput(id)
+        switch(input$tool,
+          'summary' = verbatimTextOutput(id),
+          'plot' = plotOutput(id),
+          'head' = tableOutput(id))
       )
     )
     output[[id]] <-

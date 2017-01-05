@@ -18,9 +18,7 @@ ui <- navbarPage(
     # This <div> will hold all of the plots we're going to
     # dynamically add. It's going to be super fun!
     div(id = "plot_container", style = css(
-      display = "flex",
-      flex_direction = "row",
-      width = "100%"
+      display = "flex", flex_direction = "row", width = "100%"
     ))
   ),
   resources(),

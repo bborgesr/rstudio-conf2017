@@ -1,0 +1,7 @@
+Type: Shiny
+Title: Dynamic UI demo
+Author: Joe Cheng and Bárbara Borges Ribeiro
+AuthorUrl: http://www.rstudio.com/
+License: MIT
+DisplayMode: Showcase
+Tags: outputs

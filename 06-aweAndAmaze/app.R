@@ -17,7 +17,11 @@ ui <- navbarPage(
     )),
     # This <div> will hold all of the plots we're going to
     # dynamically add. It's going to be super fun!
-    div(id = "plot_container")
+    div(id = "plot_container", style = css(
+      display = "flex",
+      flex_direction = "row",
+      width = "100%"
+    ))
   ),
   resources(),
   
@@ -51,8 +55,10 @@ server <- function(input, output, session) {
         xlab(xvar) + ylab(yvar)
     })
     insertUI("#plot_container", where = "beforeEnd",
-      ui = div(style = css(display = "inline-block"),
-        plotOutput(id, brush = "brush", width = 305, height = 675)
+      ui = div(style = css(position="relative", flex=1, width="100%", height="675px"),
+        div(style = css(position="absolute", top=0, bottom=0, left=0, right=0),
+          plotOutput(id, brush = "brush", width = "100%", height = "100%")
+        )
       )
     )
   })
